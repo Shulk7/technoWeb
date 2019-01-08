@@ -1,0 +1,22 @@
+@startuml
+
+title Use Case 3: Rechercher des profils
+
+actor "Utilisateur" as U
+boundary "Front" as F
+control "Middle" as M
+database BD
+
+autonumber
+U -> F : Va sur la page de navigation dans les profils
+F -> U : Affiche la page
+U -> F : Cique sur la barre de recherche
+F -> U : Affiche la barre de recherche
+U -> F : Renseigne ses critères
+F -> M : Transmet les critères de recherche
+M -> BD : Interroge la base de données
+BD -> M : Renvoie les résultats
+M -> M : Trie les résultats en fonction de leur score
+M -> F : Retourne les résultats par ordre décroissants
+F -> U : Affiche les résultats  
+@enduml

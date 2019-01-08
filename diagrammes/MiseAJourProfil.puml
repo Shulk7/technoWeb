@@ -1,0 +1,21 @@
+@startuml
+title Use Case 7: Mettre à jour son profil
+
+actor Utilisateur
+control Front
+control Middle
+database BD
+
+autonumber
+Utilisateur -> Front : Clique le bouton "Mon profil"
+Front --> Utilisateur : Affiche la page du profil
+Utilisateur -> Front : Clique sur le bouton de mise à jour du profil
+Front --> Utilisateur : Affiche le formulaire de mise à jour
+Utilisateur -> Front : Rempli du formulaire de mise à jour
+Front -> Middle : Transmet les données
+Middle -> Middle : Mise à jour du score
+Middle -> BD : Demande d'enregistrer les nouvelles données
+BD --> Middle : Confirme l'enregistrement
+Middle --> Front : Confirme la transmission
+Front --> Utilisateur : Affiche la page du nouveau profil
+@enduml

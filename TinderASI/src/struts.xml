@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.ui.theme" value="css_xhtml" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="global"/>
+	<package name="TinderASI" extends="struts-default">
+
+		<action name="">
+			<result>/AccueilNonConnecte.jsp</result>
+		</action>
+
+		<action name="accueil">
+			<result>/Accueil.jsp</result>
+		</action>
+
+		<action name="messagerie">
+			<result>/Messagerie.jsp</result>
+		</action>
+
+
+		<action name="profil">
+			<result>/Profil.jsp</result>
+		</action>
+
+		<action name="monprofil">
+			<result>/MonProfil.jsp</result>
+		</action>
+
+		<action name="create">
+			<result>/CreationCompte.jsp</result>
+		</action>
+
+		<action name="rechercheavancee">
+			<result>/RechercheAvancee.jsp</result>
+		</action>
+
+		<action name="register" class="main.java.action.RegisterComponent" method="register">
+			<result name="success">/thankyou.jsp</result>
+			<result name="input">CreationCompte.jsp</result>
+		</action>
+
+		<action name="search" class="main.java.action.SearchComponent" method="search">
+			<result name="success">/found.jsp</result>
+			<result name="input">/RechercheAvancee.jsp</result>
+		</action>
+
+		<action name="index">
+			<result>/Accueil.jsp</result>
+		</action>
+
+		<action name="goToSearch">
+			<result>/RechercheAvancee.jsp</result>
+		</action>
+
+		<action name="goToRegister">
+			<result>/CreationCompte.jsp</result>
+		</action>
+
+		<action name="login" class="main.java.action.LoginAction" method="doLogin">
+			<result name="input">/Login_.jsp</result>
+			<result type="redirectAction">/Accueil.jsp</result>
+		</action>
+
+		<action name="logout" class="main.java.action.LoginAction" method="doLogout">
+			<result type="redirectAction">/AccueilNonConnecte.jsp</result>
+		</action>
+
+		<action name="goToProfil">
+			<result>/MonProfil.jsp</result>
+		</action>
+
+		<action name="sendMessage" class="main.java.action.LoginAction" method="doSendMessage">
+			<result>/Messagerie.jsp</result>
+		</action>
+
+		 <action name="edit" class="main.java.action.EditAction" method="input">
+	    	<result name="input">/MonProfil.jsp</result>
+	    </action>
+	    
+	    <action name="save" class="main.java.action.EditAction" method="execute">
+	    	<result name="success">/thankyou.jsp</result>
+	    </action>
+
+	</package>
+
+</struts>

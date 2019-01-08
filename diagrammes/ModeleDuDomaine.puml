@@ -1,0 +1,61 @@
+@startuml
+
+title Modèle du domaine
+
+class Utilisateur{
+nom : String
+score : int
+motDePasse : String
+profil : Profil
+getProfil()
+miseAjourScore()
+}
+
+class VerifieurDeLogin{
+formulaire
+verifierIdentifiants()
+}
+
+class Message{
+destinataire : Utilisateur
+expediteur : Utilisateur
+contenu : String
+enregistrerMessage()
+transmettreMessageALUtilisateur()
+supprimerMessage()
+}
+
+class Recherche{
+formulaire
+trierScore()
+effectuerRecherche()
+}
+
+class Critères{
+champs
+remplir()
+selectionProfil()
+}
+
+class Profil{
+prenom : String
+nom : String
+adresse : String
+mail : String
+sexe : String
+age : int
+description : String
+attirance : enum
+mettreAJour()
+}
+
+Utilisateur "1" -- "*" Recherche : effectue
+Utilisateur "1" *-- "*" Message : rédige
+Utilisateur "1" -- "*" VerifieurDeLogin : utilise
+Recherche "1" o-- "*" Critères : contient
+Utilisateur "1" -- "*" Critères : remplit
+Critères "*" -- "*" Profil : correspondent
+Profil "1" --* "1" Utilisateur : possède
+Profil "1" *-- "*" Message : contient
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+
+title Use Case 4: Discuter
+
+actor "Utilisateur1" as U1
+actor "Utilisateur2" as U2
+boundary "Front" as F
+control "Middle" as M
+database BD
+
+autonumber
+U1 -> F : Clique sur l'onglet de messagerie
+F -> U1 : Ouvre l'onglet
+U1 -> F : Choisit son destinataire et écrit le message
+F -> M : Transmet le message et le destinataire
+M -> BD : Ecrit le contenu du message,\n l'expéditeur et le destinataire en BD
+BD -> M : Ecriture validée
+M -> F : Retourne le contenu du message
+F -> U2 : Affiche le message dans \n la fenètre de messagerie
+@enduml

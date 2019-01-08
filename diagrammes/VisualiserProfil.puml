@@ -1,0 +1,20 @@
+@startuml
+title Use Case 9: Visualiser un profil
+
+actor Utilisateur
+control Front
+control Middle
+database BD
+
+autonumber
+Utilisateur -> Front : Recherche des profils
+Front --> Utilisateur : Affiche les résultats
+Utilisateur -> Front : Clique sur le profil à visualiser
+Front --> Utilisateur : Affiche le profil plus détaillé
+Utilisateur -> Front : Clique sur visualiser le profil
+Front -> Middle : Transmet la demande de visualisation
+Middle -> BD : Demande les données du profil sélectionné
+BD --> Middle : Envoie les données
+Middle --> Front : Transmet les données du profil
+Front --> Utilisateur : Affiche la page du profil demandé
+@enduml

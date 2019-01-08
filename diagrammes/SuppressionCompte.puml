@@ -1,0 +1,21 @@
+@startuml
+
+title Use Case 10: Supprimer son compte
+
+actor "Utilisateur" as U
+control "Front" as F
+control "Middle" as M
+database BD
+
+autonumber
+U -> F : Cliquer sur le bouton suppression sur son profil
+F -> U : Demande de confirmation
+U -> F : Confirmation du choix
+F -> M : Demande de suppression
+M -> BD : Suppression de l'utilisateur
+BD -> M : Confirmation de suppression
+M -> F : Confirmation de suppression
+F -> U : Redirige vers l'accueil
+F -> U : Confirmation de suppression
+
+@enduml

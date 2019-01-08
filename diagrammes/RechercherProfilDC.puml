@@ -1,0 +1,34 @@
+@startuml
+title User Case 3 : Rechercher un profil
+
+class Utilisateur{
+nom
+score
+getProfil()
+miseAjourScore()
+}
+class Recherche{
+formulaire
+trierScore()
+effectuerRecherche()
+}
+class Critères{
+champs
+remplir()
+selectionProfil()
+}
+class Profil{
+prénom
+nom
+adresse
+mail
+sexe
+âge
+}
+
+Utilisateur "1" -- "*" Recherche : effectue
+Recherche "1" o-- "*" Critères : contient
+Utilisateur "1" -- "*" Critères : remplit
+Critères "*" -- "*" Profil : correspondent
+Profil "1" --* "1" Utilisateur : possède
+@enduml

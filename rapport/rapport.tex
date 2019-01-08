@@ -1,0 +1,150 @@
+\documentclass{scrartcl}
+
+\usepackage[french]{babel} % Définit la langue du document
+\usepackage[utf8]{inputenc} % Définit les caractères accentuées comme ceux de l'UTF-8
+\usepackage[T1]{fontenc} % On utilise les fontes accentuées de Latex
+\usepackage{graphicx} % Pour pouvoir insérer des images
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry} % On redéfinit les marges de notre document
+\usepackage{float} % Placement cool des images
+
+\graphicspath{{images/}{../out/diagrammes}}
+
+\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+
+\title{Projet TW2}
+\subtitle{Site de rencontres}
+\author{Thomas CONSTUM Quentin LAUTRIDOU Matthieu PAVAGEAU\\Benjamin PELTIER Thibault SAURON\\}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Spécification}
+    
+    \subsection{Fonctionnelles}
+        Voici les fonctionnalités auxquelles un utilisateur peut s'attendre en utilisant notre site:
+        \begin{itemize}
+            \item Création/gestion de compte.
+            \item Possibilité de discuter avec d'autres utilisateurs.
+            \item 2 connections possible.
+            \begin{itemize}
+                \item Simple visiteur avec accès réduit.
+                \item Utilisateur authentifié avec accès à tout.
+            \end{itemize}
+            \item Recherche multi-critères de personnes: activités, centres d'intérêt, localisation, age, attirance sexuelle, signe astrologique...
+            \item Comptes scorés en fonction de : nombre de matchs messages et fréquence des messages, "complétude" du profil.
+            \item Possibilité de signaler/bloquer quelqu'un.
+            \item Suppression du compte
+            \item Système de "match": sur la page de profil de personnes non "matchées" un bouton permet de le faire. Lorsqu'un utilisateur clique sur le bouton un message automatique est envoyé demandant de valider ou non la demande. Si la personne accepte les profils sont ajoutés dans la section match.
+        \end{itemize}
+
+
+    \subsection{Interface}
+
+        Voici les spécifications d'interface : \newline
+        Pour les visiteurs non authentifiés la page d'accueil propose de s'authentifier. \newline
+        Sur toutes les pages on peut voir un barre de navigations avec les onglets :
+            \begin{itemize}
+                \item Accueil
+                \item Messagerie
+                \item Mon Profil
+                \item Navigation dans les profils/ recherche
+                \item Matchs
+            \end{itemize}
+        
+        \subsubsection{Page d'Accueil}
+            Pour les visiteurs : page vitrine (ces couples se sont rencontrés grâce à nous, indication sur la sécurité du site, afficher certains profils). Un lien/ formulaire est desponible sur la page d'accueil pour s'inscrire \newline
+            Pour les utilisateurs : barre de recherche, mise en avant des profils les plus vus, les profils qui vous correspondent.
+        \subsubsection{Messagerie}
+            Uniquement utilisateur : messagerie classique, messages les plus récents en premier, cliquer pour accéder à toute la messagerie...
+
+        \subsubsection{Mon profil}
+            Photo, description avec : ce que je suis, ce que je recherche.
+        \subsubsection{Navigation dans les profils/ recherche}
+            Visiteur : vue simplifiée, pas de barre de recherche, accès à une partie des infos de profils. \newline
+            Utilisateur : accès à une barre de recherche, possibilité d'aller plus loin dans les profils.
+        \subsubsection{Matchs} 
+            Uniquement utilisateur : vue un peu comme sur la vue de tout les profils mais uniquement les personnes matchés sont visibles. Recherche par noms.
+            Une autre vue, celle des profils des autres utilisateurs avec toutes les infos du profil. \newline
+    
+        \subsection{Opérationnelles}
+        Voici la liste des contraintes opérationnelles:
+
+        \begin{itemize}
+            \item Le score de profil doit être mis à jour à chaque action (message, mise  à jour du profil, match...) de chaque utilisateur.
+            \item Les comptes doivent être stockés de faon sécurisée.
+            \item L'utilisateur doit pouvoir changer les options de confidentialité de son profil. (Visibilité, messagerie, envois de notifications...)
+            \item L'utilisateur doit pouvoir bloquer des comptes qui deviendront invisible et qui ne pourrons plus lui envoyer de messages ni accéder à ses informations.
+        \end{itemize}
+    	
+    	\begin{figure}[h]
+    		\centering
+    		\includegraphics[scale = 0.5]{../out/diagrammes/Modele/ModeleDuDomaine.png}
+    	\end{figure}
+    	\begin{figure}[h]
+            \centering
+            manque un lien entre la page d'accueil et le login/ signup \newline
+            page de groupe a revoir
+    		\includegraphics[scale = 0.4]{../out/diagrammes/Navigation/Navigation.png}
+    	\end{figure}
+
+
+\newpage
+\section{Conception}
+
+Nous avons déterminé plusieurs Use Case que nous avons traduit en diagrammes de séquence. A partir de ces premiers diagrammes, nous avons fait un diagramme de classes préliminaire.
+\newline 
+Le cas oubli de mot de passe est à rajouter.
+    \subsection{Diagrammes de séquences}{
+        \begin{figure}[h!]
+            ne pas oublier les verifs de identifiants/mails...\newline
+            \includegraphics[scale = 0.5]{../out/diagrammes/Inscription/UC1_S'enregistrer.png}
+        \end{figure}
+        \begin{figure}[h!]
+            \includegraphics[scale = 0.45]{../out/diagrammes/Identification/UC2_S'identifier.png}
+        \end{figure}
+        \begin{figure}[h!]
+            \includegraphics[scale = 0.37]{../out/diagrammes/RechercheProfil/UC3_Rechercher_des_profils.png}
+        \end{figure}
+        \begin{figure}[h]!
+            \includegraphics[scale = 0.45]{../out/diagrammes/Messagerie/UC4_Discuter.png}
+        \end{figure}
+    	\begin{figure}[h!]
+    		\includegraphics[scale = 0.4]{../out/diagrammes/Matcher/UC5_Matcher.png}
+    	\end{figure}
+        \begin{figure}[h!]
+            pas reporter mais signaler expliciter le schéma(reporter \~= signaler) \newline
+    		\includegraphics[scale = 0.45]{../out/diagrammes/Reporter/UC6_Reporter.png}
+    	\end{figure}
+       	\begin{figure}[h!]
+	    	\includegraphics[scale = 0.45]{../out/diagrammes/MiseAJourProfil/UC7_Mettre_a_jour_son_profil.png}
+	    \end{figure}
+    	\begin{figure}[h!]
+    		\includegraphics[scale = 0.3]{../out/diagrammes/Bloquer/UC8_Bloquer.png}
+    	\end{figure}
+    	\begin{figure}[h!]
+    		\includegraphics[scale = 0.45]{../out/diagrammes/VisualiserProfil/UC9_Visualiser_un_profil.png}
+    	\end{figure}
+    	\begin{figure}[h!]
+    		\includegraphics[scale = 0.45]{../out/diagrammes/Suppression/UC10_Suppression.png}
+    	\end{figure}
+    }
+\newpage
+~
+\newpage
+~
+\newpage
+~
+\newpage
+    \subsection{Diagramme de classes préliminaire}{
+		\begin{figure}[h]
+            \centering
+			\includegraphics[scale = 0.5]{../out/diagrammes/DiagrammeClasse/Classe.png}
+		\end{figure}
+	}
+
+
+\end{document}

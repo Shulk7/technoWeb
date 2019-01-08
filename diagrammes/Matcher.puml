@@ -1,0 +1,17 @@
+@startuml
+title Use Case 5: Matcher avec une personne
+actor "Utilisateur" as U
+control "Front" as F
+control "Middle" as M
+database BD
+
+autonumber
+U -> F : Va sur le profil d'une personne
+F -> U : Affiche la page
+U -> F : Cherche à entrer en contact avec une personne 
+F -> M : Transmet la demande
+M -> BD : Enregistre la demande et recherche si la demande est réciproque
+BD -> M : Renvoie la réponse
+M -> F : Vérifie si la demande est réciproque
+F -> U : Si c'est le cas, il y a match
+@enduml

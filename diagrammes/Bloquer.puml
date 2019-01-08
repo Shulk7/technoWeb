@@ -1,0 +1,16 @@
+@startuml
+title Use Case 8: Bloquer une personne
+
+actor "Utilisateur" as U
+control "Front" as F
+control "Middle" as M
+database BD
+
+autonumber
+U -> F : Clique sur le bouton "Bloquer cette personne"
+F -> M : Transmet la demande
+M -> BD : La personne est ajoutée à la liste des personne bloquée et l'utilisateur est \n ajouté à la liste des personnes auquel la personne bloquée ne peut accéder
+BD -> M : renvoie les changements
+M -> F : Changements validés
+F -> U : Notification de la réussite du blocage
+@enduml

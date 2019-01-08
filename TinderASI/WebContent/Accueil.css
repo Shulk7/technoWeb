@@ -1,0 +1,26 @@
+.navbar{
+    background-color: purple;
+}
+
+.profilepic{
+    height: 30vh;
+    object-fit: cover;
+}
+
+.currentUserProfilePic{
+    position: relative;
+    bottom: 0.3vh;
+    height: 4vh;
+    object-fit: cover;
+    margin-left: 2vw;
+    margin-right: -5.5vw;
+}
+
+.profiledropdown{
+    margin-left: 5vh;
+}
+
+.logo{
+    width: 2vh;
+    margin-right: 0.8vh;
+}

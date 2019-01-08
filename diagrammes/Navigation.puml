@@ -1,0 +1,40 @@
+@startuml Diagramme de navigation
+(*) --> "<<page>> Accueil"
+
+"<<page>> Accueil" -left-> "<<page>> Mon Profil"
+"<<page>> Accueil" --> "<<page>> Messagerie"
+"<<page>> Accueil" --> "<<frame>> Chat"
+"<<page>> Accueil" --> "<<page>> Profil"
+"<<page>> Accueil" --> "<<page>> Groupes"
+"<<page>> Accueil" --> "<<frame>> Recherche simple"
+"<<page>> Accueil" --> "<<page>> Recherche avancée"
+
+
+"<<page>> Recherche avancée" --> "<<Action>> Recherche"
+"<<frame>> Recherche simple" --> "<<Action>> Recherche"
+if "recherche réussie" then
+-->[false] "<<page>> Aucun résultat"
+--> "<<page>> Accueil"
+else
+-->[true] "<<page>> Résultats"
+
+"<<page>> Mon Profil" -left-> "<<Action>> Modifier"
+"<<Action>> Modifier" --> "<<page>> Mon Profil"
+
+"<<page>> Groupes" --> "<<page>> Groupe"
+
+"<<page>> Groupe" --> "<<Action>> Rejoindre"
+"<<page>> Groupe" --> "<<page>> Profil"
+
+"<<page>> Résultats" --> "<<page>> Profil"
+"<<page>> Résultats" --> "<<page>> Groupe"
+"<<page>> Résultats" --> "<<Action>> Parcourir Pages"
+"<<Action>> Parcourir Pages" --> "<<page>> Résultats"
+
+"<<page>> Profil" --> "<<Action>> Matcher"
+
+"<<frame>> Chat" --> "<<Action>> Envoyer un message"
+"<<Action>> Envoyer un message" --> "<<frame>> Chat"
+"<<page>> Messagerie" --> "<<Action>> Envoyer un message"
+"<<Action>> Envoyer un message" --> "<<page>> Messagerie"
+@enduml

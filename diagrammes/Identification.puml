@@ -1,0 +1,20 @@
+@startuml
+
+title Use Case 2: S'identifier
+
+actor "Utilisateur" as U
+boundary "Front" as F
+control "Middle" as M
+database BD
+
+autonumber
+U -> F : Clique sur le bouton "Se connecter"
+F -> U : Affiche la page de connection
+U -> F : Renseigne son identifiant et son mot de passe
+F -> M : Valide les identifiants
+M -> BD : Cherche les identifiants en base
+BD -> M : Identifiants trouvés
+M -> F : Identifiants valides
+F -> U : Redirige vers l'accueil
+
+@enduml

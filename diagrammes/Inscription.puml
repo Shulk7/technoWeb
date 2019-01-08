@@ -1,0 +1,22 @@
+@startuml
+
+title Use Case 1: S'enregistrer
+
+actor "Utilisateur" as U
+boundary "Front" as F
+control "Middle" as M
+database BD
+
+autonumber
+U -> F : Clique sur le bouton "Créer un compte"
+F -> U : Affiche le formulaire d'inscription
+U -> F : Remplis le formulaire
+F -> M : Valide le formulaire
+M -> BD : Vérifie que le nom d'utilisateur est libre
+BD -> M : Le nom d'utilisateur est libre
+M -> BD : Entre l'utilisateur en base
+BD -> M : Utilisateur bien enregistré
+M -> F : Inscription validée
+F -> U : Redirige vers la page d'accueil du site
+
+@enduml

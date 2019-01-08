@@ -1,0 +1,96 @@
+= Projet de TechnoWeb
+
+
+
+
+
+== Spécification
+
+
+
+=== Fonctionnelles
+
+
+Voici les fonctionnalités auxquelles un utilisateur peut s'attendre en utilisant notre site:
+
+* Création/gestion de compte.
+* Possibilité de discuter avec d'autres utilisateurs.
+* 2 connections possibles :
+** Simple visiteur avec accès réduit.
+** Utilisateur authentifié avec accès à tout.
+* Recherche multi-critères de personnes: activités, centres d'intérêt, localisation, age, attirance sexuelle, signe astrologique...
+* Comptes scorés en fonction de : nombre de matchs messages et fréquence des messages, "complétude" du profil.
+* Possibilité de signaler/bloquer quelqu'un.
+* Suppression du compte
+* Système de "match": sur la page de profil de personnes non "matchées" un bouton permet de le faire. Lorsqu'un utilisateur clique sur le bouton un message automatique est envoyé demandant de valider ou non la demande. Si la personne accepte les profils sont ajoutés dans la section match.
+
+
+=== Interface
+
+Voici les spécifications d'interface : Pour les visiteurs non authentifiés la page d'accueil propose de s'authentifier. Sur toutes les pages on peut voir un barre de navigations avec les onglets :
+
+* Accueil
+* Messagerie
+* Mon Profil
+* Navigation dans les profils/ recherche
+* Matchs
+
+==== Page d'accueil
+
+Pour les visiteurs : page vitrine (ces couples se sont rencontrés grâce à nous, indication sur la sécurité du site, afficher certains profils). Un lien/ formulaire est disponible sur la page d'accueil pour s'inscrire. +
+Pour les utilisateurs : barre de recherche, mise en avant des profils les plus vus, les profils qui vous correspondent.
+
+==== Messagerie
+
+Uniquement utilisateur : messagerie classique, messages les plus récents en premier, cliquer pour accéder à toute la messagerie...
+
+==== Mon profil
+
+Photo, description avec : ce que je suis, ce que je recherche.
+
+==== Navigation dans les profils/ recherche
+
+Visiteur : vue simplifiée, pas de barre de recherche, accès à une partie des infos de profils.+
+Utilisateur : accès à une barre de recherche, possibilité d'aller plus loin dans les profils.
+
+==== Matchs
+
+Uniquement utilisateur : vue un peu comme sur la vue de tout les profils mais uniquement les personnes matchés sont visibles. Recherche par noms. + 
+Une autre vue, celle des profils des autres utilisateurs avec toutes les infos du profil.
+
+=== Opérationnelles
+Voici la liste des contraintes opérationnelles:
+
+* Le score de profil doit être mis à jour à chaque action (message, mise  à jour du profil, match...) de chaque utilisateur.
+* Les comptes doivent être stockés de faon sécurisée.
+* L'utilisateur doit pouvoir changer les options de confidentialité de son profil. (Visibilité, messagerie, envois de notifications...)
+* L'utilisateur doit pouvoir bloquer des comptes qui deviendront invisible et qui ne pourrons plus lui envoyer de messages ni accéder à ses informations.
+
+=== Conception
+
+plantuml::../diagrammes/ModeleDuDomaine.puml[format="png", align="center"]
+
+plantuml::../diagrammes/Navigation.puml[format="png", align="center"]
+
+
+Nous avons déterminé plusieurs Use Case que nous avons traduit en diagrammes de séquence. A partir de ces premiers diagrammes, nous avons fait un diagramme de classes préliminaire.
+
+plantuml::../diagrammes/Inscription.puml[format="png", align="center"]
+
+plantuml::../diagrammes/Identification.puml[format="png", align="center"]
+
+plantuml::../diagrammes/RechercheProfil.puml[format="png", align="center"]
+
+plantuml::../diagrammes/Messagerie.puml[format="png", align="center"]
+
+plantuml::../diagrammes/Matcher.puml[format="png", align="center"]
+
+plantuml::../diagrammes/Reporter.puml[format="png", align="center"]
+
+plantuml::../diagrammes/MiseAJourProfil.puml[format="png", align="center"]
+
+plantuml::../diagrammes/Bloquer.puml[format="png", align="center"]
+
+plantuml::../diagrammes/VisualiserProfil.puml[format="png", align="center"]
+
+plantuml::../diagrammes/SuppressionCompte.puml[format="png", align="center"]
